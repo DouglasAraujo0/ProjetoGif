@@ -13,9 +13,9 @@ export default ({route, navigation})=>{
     const link = `api.giphy.com/v1/${escolha}/search`; 
     console.log(link);
 
-    const solicitar = ()=>{
+    const solicitar = async (text)=>{
         try {
-            const resultados = axios.get(link,{
+            const resultados = await axios.get(link,{
                 params:{
                     api_key: "YRtBUPTWGmA2c9vYRtaMriXXXquvyzTP",
                     q: text,
@@ -44,6 +44,7 @@ export default ({route, navigation})=>{
                         name='search' 
                         size={40} 
                         color='white'
+                        onPress={solicitar(text)}
                     />
                 </View>
             </SafeAreaView>
